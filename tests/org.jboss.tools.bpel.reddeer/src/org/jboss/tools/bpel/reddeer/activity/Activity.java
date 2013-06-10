@@ -1,8 +1,7 @@
 package org.jboss.tools.bpel.reddeer.activity;
 
-import static org.hamcrest.core.AllOf.allOf;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -63,12 +62,10 @@ public class Activity {
 		this.name = name;
 		this.type = type;
 
-		List<Matcher<?>> matchers = new ArrayList<Matcher<?>>();
-		matchers.add(new ActivityOfType(type));
+		Matcher matcher = new ActivityOfType(type);
 		if (name != null) {
-			matchers.add(new ActivityWithName(name));
+			matcher = allOf(new ActivityOfType(type), new ActivityWithName(name));
 		}
-		Matcher matcher = allOf(matchers);
 
 		if (parent != null) {
 			List<SWTBotGefEditPart> editParts = bpelEditor.getEditPart(parent.editPart, matcher);

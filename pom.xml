@@ -18,6 +18,8 @@
 	</properties>
 	<modules>
 		<module>tests</module>
+		<module>features</module>
+		<module>site</module>
 	</modules>
         <repositories>
                 <repository>

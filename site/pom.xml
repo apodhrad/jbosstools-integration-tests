@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jboss.tools</groupId>
+    <artifactId>integration-tests</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>org.jboss.tools.integration-tests</groupId>
+  <artifactId>site</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>integration-tests.site</name>
+  <packaging>eclipse-repository</packaging>
+  
+  <repositories>
+    <!-- Eclipse Orbit Repository -->
+    <repository>
+      <id>orbit</id>
+      <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository</url>
+      <layout>p2</layout>
+      <snapshots>
+	<enabled>true</enabled>
+      </snapshots>
+      <releases>
+	<enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tychoVersion}</version>
+        <configuration>
+          <includeAllDependencies>false</includeAllDependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -15,6 +15,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<reddeer.site>http://download.jboss.org/jbosstools/updates/stable/juno/core/reddeer/0.2.0/</reddeer.site>
+		<jbtis.site>http://download.jboss.org/jbosstools/updates/integration/juno/integration-stack/aggregate/4.0.0</jbtis.site>
 	</properties>
 	<modules>
 		<module>tests</module>
@@ -27,6 +28,18 @@
                         <url>${reddeer.site}</url>
                         <layout>p2</layout>
                 </repository>
+	  <!-- JBTIS Repository -->
+	  <repository>
+	    <id>jbtis</id>
+	    <url>${jbtis.site}</url>
+	    <layout>p2</layout>
+	    <snapshots>
+	      <enabled>true</enabled>
+	    </snapshots>
+	    <releases>
+	      <enabled>true</enabled>
+	    </releases>
+	  </repository>
         </repositories>
 
 </project>

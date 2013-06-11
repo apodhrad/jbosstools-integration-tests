@@ -13,7 +13,9 @@
    </license>
 
   <plugin id="org.custommonkey.xmlunit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.jboss.tools.ui.bot.ext" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.jboss.tools.bpel.reddeer" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.jboss.tools.bpel.ui.bot.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.jboss.tools.esb.ui.bot.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

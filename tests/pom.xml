@@ -20,8 +20,12 @@
         </properties>
 
 	<modules>
+	  <module>org.jboss.tools.ui.bot.ext</module>
 	  <module>org.jboss.tools.bpel.reddeer</module>
 	  <module>org.jboss.tools.bpel.ui.bot.test</module>
+	  <module>org.jboss.tools.esb.ui.bot.test</module>
+	  <module>org.jboss.tools.modeshape.rest.ui.bot.test</module>
+	  <module>org.jboss.tools.jbpm.ui.bot.test</module>
 	</modules>
 
 </project>

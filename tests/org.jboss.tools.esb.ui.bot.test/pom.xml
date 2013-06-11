@@ -42,7 +42,7 @@
 	      <artifactId>tycho-surefire-plugin</artifactId>
 	      <configuration>
 		<useUIThread>false</useUIThread>
-		<skip>${esb.test.skip}</skip>
+		<skip>${swtbot.test.skip}</skip>
 		<testSuite>org.jboss.tools.esb.ui.bot.test</testSuite>
 		<testClass>org.jboss.tools.esb.ui.bot.tests.${test.class}</testClass>
 		<forkedProcessTimeoutInSeconds>7200</forkedProcessTimeoutInSeconds>

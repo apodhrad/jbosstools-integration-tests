@@ -11,9 +11,9 @@
 
 package org.jboss.tools.ui.bot.ext.helper;
 
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.instanceOf;
 
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
@@ -92,7 +92,7 @@ public class ContextMenuHelper {
           @SuppressWarnings("unchecked")
     public MenuItem run() {
             MenuItem menuItem = null;
-            Matcher<?> matcher = allOf(instanceOf(MenuItem.class),withMnemonic(text));
+            Matcher<?> matcher = allOf(widgetOfType(MenuItem.class),withMnemonic(text));
             menuItem = show(menu, matcher, hideAfterwards, foundMenuItems);
             Menu currentMenu = menu;
             if (menuItem != null) {
@@ -254,7 +254,7 @@ public class ContextMenuHelper {
         MenuItem menuItem = null;
         Menu menu = topMenu;
         for (String text : texts) {
-          Matcher<?> matcher = allOf(instanceOf(MenuItem.class),withMnemonic(text));
+          Matcher<?> matcher = allOf(widgetOfType(MenuItem.class),withMnemonic(text));
           menuItem = show(menu, matcher, false, null);
           if (menuItem != null) {
             menu = menuItem.getMenu();

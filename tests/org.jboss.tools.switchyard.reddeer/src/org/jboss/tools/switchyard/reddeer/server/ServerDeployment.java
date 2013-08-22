@@ -33,6 +33,8 @@ public class ServerDeployment {
 	}
 
 	public void deployProject(String project) {
+		Bot.get().sleep(10 * 1000);
+
 		clearConsole();
 		ServersView serversView = new ServersView();
 		serversView.open();
@@ -84,12 +86,12 @@ public class ServerDeployment {
 	}
 
 	private void checkDeployment() {
-		Bot.get().sleep(60 * 1000);
+		Bot.get().sleep(10 * 1000);
 		ConsoleView consoleView = new ConsoleView();
 		consoleView.open();
 		String consoleText = consoleView.getConsoleText().toUpperCase();
 		if (consoleText.contains("ERROR")) {
-			throw new RuntimeException("An error occured during full publishing");
+			throw new RuntimeException("An error occured during deployment\n" + consoleText);
 		}
 	}
 }

@@ -40,7 +40,7 @@ public class WSProxyRESTTest extends SWTBotTestCase {
 
 	public static final String REST_URL = "http://localhost:8080/rest/MyRESTApplication";
 	public static final String REST_SERVICE = "HelloRESTService";
-	public static final String PROJECT = "proxy-rest";
+	public static final String PROJECT = "proxy_rest";
 	public static final String PACKAGE = "com.example.switchyard.proxy_rest";
 
 	@Before
@@ -95,15 +95,15 @@ public class WSProxyRESTTest extends SWTBotTestCase {
 				.deleteLineWith("ToSayHello")
 				.type("public static String transformStringToSayHelloResponse(String from) {")
 				.deleteLineWith("return null")
-				.type("return \"<sayHelloResponse xmlns=\\\"urn:com.example.switchyard:proxy-rest:1.0\\\">"
-						+ "<string>\"+ from + \"</string></sayHelloResponse>\";")
+				.type("return \"<sayHelloResponse xmlns=\\\"urn:com.example.switchyard:" + PROJECT
+						+ ":1.0\\\">" + "<string>\"+ from + \"</string></sayHelloResponse>\";")
 				.deleteLineWith("return null").type("return from.getTextContent().trim();")
 				.saveAndClose();
 		new SwitchYardEditor().save();
 
 		/* Expose Proxy Service Through SOAP */
 		new Service("HelloPortType").addBinding("SOAP");
-		new SOAPBindingWizard().activate().setContextpath(PROJECT).finish();
+		new SOAPBindingWizard().setContextpath(PROJECT).finish();
 		new SwitchYardEditor().save();
 
 		/* Reference to RESTful Service */

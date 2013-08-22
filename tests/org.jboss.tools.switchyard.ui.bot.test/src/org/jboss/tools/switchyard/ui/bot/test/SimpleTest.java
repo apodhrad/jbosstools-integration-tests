@@ -50,8 +50,8 @@ import org.junit.Test;
 @Server(type = Type.ALL, state = State.RUNNING)
 public class SimpleTest extends SWTBotTestCase {
 
-	private static final String PROJECT = "test";
-	private static final String PACKAGE = "com.example.switchyard.test";
+	private static final String PROJECT = "simple";
+	private static final String PACKAGE = "com.example.switchyard.simple";
 
 	@Test
 	public void simpleTest() throws Exception {
@@ -91,16 +91,14 @@ public class SimpleTest extends SWTBotTestCase {
 		wizard.setTransformerType("Java Transformer").next();
 		wizard.setName("ExampleServiceTransformers").finish();
 
-		new ProjectExplorer()
-				.getProject(PROJECT)
-				.getProjectItem("src/main/java", "com.example.switchyard.test",
-						"ExampleServiceTransformers.java").open();
+		new ProjectExplorer().getProject(PROJECT)
+				.getProjectItem("src/main/java", PACKAGE, "ExampleServiceTransformers.java").open();
 		new TextEditor("ExampleServiceTransformers.java")
 				.deleteLineWith("ToSayHello")
 				.type("public static String transformStringToSayHelloResponse(String from) {")
 				.deleteLineWith("return null")
-				.type("return \"<sayHelloResponse xmlns=\\\"urn:com.example.switchyard:test:1.0\\\">"
-						+ "<string>\"+ from + \"</string></sayHelloResponse>\";")
+				.type("return \"<sayHelloResponse xmlns=\\\"urn:com.example.switchyard:" + PROJECT
+						+ ":1.0\\\">" + "<string>\"+ from + \"</string></sayHelloResponse>\";")
 				.deleteLineWith("return null").type("return from.getTextContent().trim();")
 				.saveAndClose();
 
@@ -111,7 +109,7 @@ public class SimpleTest extends SWTBotTestCase {
 
 		/* Test SOAP Response */
 		new ServerDeployment(SwitchyardSuite.getServerName()).deployProject(PROJECT);
-		SoapClient.testResponses("http://localhost:8080/test/ExampleService?wsdl", "Hello");
+		SoapClient.testResponses("http://localhost:8080/" + PROJECT + "/ExampleService?wsdl", "Hello");
 		Bot.get().sleep(10 * 1000);
 	}
 

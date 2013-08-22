@@ -38,7 +38,7 @@ import org.junit.Test;
 @Server(type = Type.ALL, state = State.RUNNING)
 public class WSProxySOAPTest extends SWTBotTestCase {
 
-	public static final String PROJECT = "proxy";
+	public static final String PROJECT = "proxy_soap";
 	private static final String WSDL = "Hello.wsdl";
 
 	@Before

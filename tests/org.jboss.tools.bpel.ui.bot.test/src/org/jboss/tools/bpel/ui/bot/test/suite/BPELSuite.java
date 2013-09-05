@@ -7,12 +7,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.swtbot.swt.finder.junit.ScreenshotCaptureListener;
 import org.jboss.reddeer.junit.runner.RedDeerSuite;
 import org.jboss.reddeer.swt.api.Tree;
 import org.jboss.reddeer.swt.api.TreeItem;
 import org.jboss.reddeer.swt.util.Bot;
 import org.jboss.tools.bpel.reddeer.view.ServerPreferencePage;
 import org.jboss.tools.bpel.reddeer.wizard.ServerWizard;
+import org.junit.runner.notification.RunListener;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 
@@ -26,6 +29,18 @@ public class BPELSuite extends RedDeerSuite {
 		super(clazz, foo(builder));
 	}
 
+	@Override
+	public void run(RunNotifier notifier) {
+		RunListener failureSpy = new ScreenshotCaptureListener();
+		notifier.removeListener(failureSpy);
+		notifier.addListener(failureSpy);
+		try {
+			super.run(notifier);
+		} finally {
+			notifier.removeListener(failureSpy);
+		}
+	}
+	
 	private static RunnerBuilder foo(RunnerBuilder builder) {
 		Properties props = loadSWTBotProperties();
 		addServer(props.getProperty("SERVER"));

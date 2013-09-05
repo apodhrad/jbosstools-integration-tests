@@ -19,7 +19,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	AssociateRuntimeTest.class,
 	AssignActivityTest.class,
 	FaultModelingTest.class,
-	ExampleTest.class
+//	ExampleTest.class
 })
 @RunWith(BPELSuite.class)
 public class AllTests extends TestSuite {

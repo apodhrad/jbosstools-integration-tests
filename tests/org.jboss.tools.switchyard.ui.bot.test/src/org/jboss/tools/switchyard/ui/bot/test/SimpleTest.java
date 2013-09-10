@@ -61,6 +61,11 @@ public class SimpleTest extends SWTBotTestCase {
 	public void simpleTest() throws Exception {
 		new SwitchYardProjectWizard(PROJECT).impl("Bean").binding("SOAP").create();
 
+		// Sometimes the editor is not displayed properly, this happens only
+		// when the project is created by bot
+		new SwitchYardEditor().close();
+		new ProjectExplorer().getProject(PROJECT).getProjectItem("SwitchYard").open();
+
 		new Bean().setService("ExampleService").create();
 
 		new Component("ExampleService").doubleClick();

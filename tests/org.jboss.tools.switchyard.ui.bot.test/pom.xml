@@ -182,17 +182,6 @@
 		  <version>${maven-download-plugin.version}</version>
 		  <executions>
 		    <execution>
-		      <id>get-eap</id>
-		      <phase>pre-integration-test</phase>
-		      <goals>
-			<goal>wget</goal>
-		      </goals>
-		      <configuration>
-			<url>${eap610.url}</url>
-			<unpack>true</unpack>
-		      </configuration>
-		    </execution>
-		    <execution>
 		      <id>get-soa</id>
 		      <phase>pre-integration-test</phase>
 		      <goals>
@@ -217,7 +206,7 @@
 		      </goals>
 		      <configuration>
 			<tasks>
-			  <echo file="${swtbot.properties}">SERVER=SOA,6.0.0,default,${requirementsDirectory}/jboss-eap-6.1</echo>
+			  <echo file="${swtbot.properties}">SERVER=SOA,6.0.0,default,${requirementsDirectory}/SOA-6.1.0/jboss-eap-6.1</echo>
 			</tasks>
 		      </configuration>
 		    </execution>
